@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+
+    <div class="card shadow-sm border-0" style="width: 100%; max-width: 420px; border-radius: 16px;">
+        <div class="card-body p-5">
+
+            <h2 class="text-center mb-4 fw-bold" style="color: #2c3e50;">Iniciar Sesión</h2>
+
+            <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()">
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold text-muted small">Email</label>
+                    <input type="email" class="form-control form-control-lg bg-light border-0" formControlName="email"
+                        placeholder="correo@ejemplo.com">
+
+                    @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+                    <small class="text-danger mt-1 d-block fw-semibold">
+                        Ingresá un email válido.
+                    </small>
+                    }
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold text-muted small">Contraseña</label>
+                    <input type="password" class="form-control form-control-lg bg-light border-0"
+                        formControlName="password" placeholder="******">
+
+                    @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+                    <small class="text-danger mt-1 d-block fw-semibold">
+                        La contraseña es obligatoria (mín. 6 caracteres).
+                    </small>
+                    }
+                </div>
+
+                @if (mensajeError) {
+                <div class="alert alert-danger py-2 border-0 shadow-sm text-center">
+                    <small class="fw-bold">{{ mensajeError }}</small>
+                </div>
+                }
+
+                <button type="submit" class="btn btn-success btn-lg w-100 fw-bold mt-2" [disabled]="loginForm.invalid"
+                    style="background-color: #10b981; border: none; border-radius: 8px;">
+                    Ingresar
+                </button>
+            </form>
+
+            <p class="text-center text-muted mt-4 mb-0 small">
+                ¿No tenés cuenta?
+                <a routerLink="/auth/registro" class="text-decoration-none fw-bold ms-1"
+                    style="color: #10b981;">Registrate acá</a>
+            </p>
+
+        </div>
+    </div>
+</div>

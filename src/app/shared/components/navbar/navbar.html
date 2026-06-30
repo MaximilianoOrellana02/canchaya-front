@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" routerLink="/inicio" style="color: #10b981; cursor: pointer;">
+            ⚽ CanchaYa
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContenido"
+            aria-controls="navbarContenido" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContenido">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                @if (!authService.usuarioActivo()) {
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/inicio">Buscar Canchas</a>
+                </li>
+                }
+                @else {
+                @if (authService.usuarioActivo()?.rol === 'jugador') {
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/inicio">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/portal-jugador/mis-reservas">Mis Reservas</a>
+                </li>
+                }
+                @else if (authService.usuarioActivo()?.rol === 'duenio') {
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/panel-duenio/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/panel-duenio/complejos">Mis Complejos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/panel-duenio/agenda">Agenda</a>
+                </li>
+                }
+                }
+            </ul>
+
+            <ul class="navbar-nav ms-auto">
+
+                @if (!authService.usuarioActivo()) {
+                <li class="nav-item me-2">
+                    <a class="" routerLink="/auth/login">Ingresar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="" routerLink="/auth/registro">Registrarse</a>
+                </li>
+                }
+                @else {
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fw-bold" id="menuUsuario" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" style="cursor: pointer;">
+                        Hola, {{ authService.usuarioActivo()?.nombre }}
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="menuUsuario">
+                        <li>
+                            <a class="dropdown-item text-danger fw-semibold" (click)="cerrarSesion()"
+                                style="cursor: pointer;">
+                                Cerrar Sesión
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                }
+            </ul>
+
+        </div>
+    </div>
+</nav>

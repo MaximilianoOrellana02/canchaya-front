@@ -1,0 +1,81 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light py-5">
+
+    <div class="card shadow-sm border-0" style="width: 100%; max-width: 500px; border-radius: 16px;">
+        <div class="card-body p-4 p-md-5">
+
+            <h2 class="text-center mb-4 fw-bold" style="color: #2c3e50;">Crear Cuenta</h2>
+
+            <form [formGroup]="registroForm" (ngSubmit)="registrar()">
+
+                <div class="row mb-3">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <label class="form-label fw-semibold text-muted small">Nombre</label>
+                        <input type="text" class="form-control form-control-lg bg-light border-0"
+                            formControlName="nombre" placeholder="Tu nombre">
+
+                        @if (registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched) {
+                        <small class="text-danger mt-1 d-block fw-semibold">Obligatorio.</small>
+                        }
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold text-muted small">Apellido</label>
+                        <input type="text" class="form-control form-control-lg bg-light border-0"
+                            formControlName="apellido" placeholder="Tu apellido">
+
+                        @if (registroForm.get('apellido')?.invalid && registroForm.get('apellido')?.touched) {
+                        <small class="text-danger mt-1 d-block fw-semibold">Obligatorio.</small>
+                        }
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold text-muted small">Email</label>
+                    <input type="email" class="form-control form-control-lg bg-light border-0" formControlName="email"
+                        placeholder="correo@ejemplo.com">
+
+                    @if (registroForm.get('email')?.invalid && registroForm.get('email')?.touched) {
+                    <small class="text-danger mt-1 d-block fw-semibold">Ingresá un email válido.</small>
+                    }
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold text-muted small">Contraseña</label>
+                    <input type="password" class="form-control form-control-lg bg-light border-0"
+                        formControlName="password" placeholder="******">
+
+                    @if (registroForm.get('password')?.invalid && registroForm.get('password')?.touched) {
+                    <small class="text-danger mt-1 d-block fw-semibold">Mínimo 6 caracteres.</small>
+                    }
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold text-muted small">¿Qué vas a hacer en la plataforma?</label>
+                    <select class="form-select form-select-lg bg-light border-0" formControlName="rol"
+                        style="cursor: pointer;">
+                        <option value="jugador">Quiero alquilar canchas</option>
+                        <option value="duenio">Soy dueño de un complejo</option>
+                    </select>
+                </div>
+
+                @if (mensajeError) {
+                <div class="alert alert-danger py-2 border-0 shadow-sm text-center mb-4">
+                    <small class="fw-bold">{{ mensajeError }}</small>
+                </div>
+                }
+
+                <button type="submit" class="btn btn-lg w-100 fw-bold mt-2 text-white" [disabled]="registroForm.invalid"
+                    style="background-color: #2563eb; border: none; border-radius: 8px;">
+                    Registrarme
+                </button>
+            </form>
+
+            <p class="text-center text-muted mt-4 mb-0 small">
+                ¿Ya tenés cuenta?
+                <a routerLink="/auth/login" class="text-decoration-none fw-bold ms-1" style="color: #2563eb;">Iniciá
+                    sesión acá</a>
+            </p>
+
+        </div>
+    </div>
+</div>

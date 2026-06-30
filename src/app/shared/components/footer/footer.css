@@ -1,0 +1,56 @@
+.footer-container {
+    background-color: #121212;
+    font-family: "Montserrat", sans-serif;
+}
+
+.tracking-wide {
+    letter-spacing: 1.5px;
+    font-size: 0.95rem;
+}
+
+.text-muted {
+    color: #9ca3af !important;
+}
+
+.contact-list ion-icon {
+    color: #10b981;
+}
+
+.social-icons a {
+    color: #9ca3af;
+    font-size: 1.8rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.social-icons a:hover {
+    color: #10b981;
+    transform: translateY(-5px);
+}
+
+.minimalist-form .form-control {
+    border-color: #374151 !important;
+    transition: border-color 0.3s ease;
+}
+
+.minimalist-form .form-control::placeholder {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.minimalist-form .form-control:focus {
+    border-color: #10b981 !important;
+    color: #ffffff;
+}
+
+.minimalist-form button {
+    transition: all 0.3s ease;
+    border-color: #6b7280;
+    color: #d1d5db;
+}
+
+.minimalist-form button:hover {
+    background-color: #10b981;
+    border-color: #10b981;
+    color: #ffffff !important;
+}

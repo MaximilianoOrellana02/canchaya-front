@@ -1,0 +1,19 @@
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(16, 185, 129, 0.25);
+    background-color: #ffffff !important;
+    border: 1px solid #10b981 !important;
+}
+
+.form-control {
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+    transform: translateY(-2px);
+}

@@ -1,0 +1,57 @@
+<section class="container py-5">
+
+    <div class="text-center mb-5">
+        <h2 class="fw-bold display-6" style="color: #2c3e50;">Canchas Top de la Zona</h2>
+        <p class="text-muted fs-5">Los predios mejor valorados por los jugadores</p>
+    </div>
+
+    <div class="row g-4">
+
+        @for (complejo of complejos; track complejo.id) {
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0 complejo-card">
+
+                <div class="img-wrapper">
+                    <img [src]="complejo.imagenUrl || 'https://images.unsplash.com/photo-1518605368461-1ee7a9a13b63?auto=format&fit=crop&q=80&w=800'"
+                        class="card-img-top" [alt]="complejo.nombre">
+
+                    @if (complejo.valoracion) {
+                    <div class="badge-estrellas shadow-sm">
+                        ⭐ {{ complejo.valoracion }}
+                    </div>
+                    }
+                </div>
+
+                <div class="card-body d-flex flex-column p-4">
+                    <h5 class="card-title fw-bold mb-1">{{ complejo.nombre }}</h5>
+
+                    <p class="text-muted small mb-1">📍 {{ complejo.direccion }}</p>
+                    <p class="text-muted small mb-4">📞 {{ complejo.telefono }}</p>
+
+                    <div class="mt-auto">
+                        <div class="d-flex justify-content-between align-items-end mb-3 border-top pt-3">
+                            <span class="text-muted small">Horario:</span>
+
+                            <span class="fw-bold text-dark">
+                                {{ complejo.hora_apertura | slice:0:5 }} a {{ complejo.hora_cierre | slice:0:5 }}
+                            </span>
+                        </div>
+
+                        <button class="btn btn-outline-success w-100 fw-bold btn-reservar">
+                            Ver disponibilidad
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        } @empty {
+        <div class="col-12 text-center py-5">
+            <div class="alert alert-light border-0 shadow-sm" role="alert">
+                <p class="text-muted fs-5 mb-0">Todavía no hay complejos registrados. ¡Sé el primero en sumar el tuyo!
+                </p>
+            </div>
+        </div>
+        }
+    </div>
+</section>
