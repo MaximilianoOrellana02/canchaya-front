@@ -1,4 +1,4 @@
 export const environment = {
     productio: false,
-    apiUrl: 'http://localhost:3000/api'
+    apiUrl: 'https://canchaya-back.onrender.com/api'
 }

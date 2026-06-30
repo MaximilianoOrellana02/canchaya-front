@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://tuservidor.com'
+    apiUrl: 'https://canchaya-back.onrender.com'
 };
