@@ -46,10 +46,10 @@
 
                 @if (!authService.usuarioActivo()) {
                 <li class="nav-item me-2">
-                    <a class="" routerLink="/auth/login">Ingresar</a>
+                    <a class="btn btn-outline-success" routerLink="/auth/login">Ingresar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="" routerLink="/auth/registro">Registrarse</a>
+                    <a class="btn btn-success" routerLink="/auth/registro">Registrarse</a>
                 </li>
                 }
                 @else {
@@ -61,7 +61,7 @@
 
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="menuUsuario">
                         <li>
-                            <a class="dropdown-item text-danger fw-semibold" (click)="cerrarSesion()"
+                            <a class="dropdown-item text-danger fw-semibold btn-danger btn" (click)="cerrarSesion()"
                                 style="cursor: pointer;">
                                 Cerrar Sesión
                             </a>
